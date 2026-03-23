@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitHub Issues Tracker</title>
+
+    <!-- DaisyUI + Tailwind -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5/themes.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- LOGIN PAGE -->
+    <div id="loginPage" class="login-wrapper">
+      <div class="login-card">
+        <!-- logo + title -->
+        <div class="flex flex-col items-center mb-6">
+          <div class="logo-circle">
+            <img
+              src="./assets/github-logo.png"
+              alt="GitHub Logo"
+              class="logo-img"
+            />
+          </div>
+          <h1 class="text-2xl font-bold text-gray-800 mt-4">
+            GitHub Issues Tracker
+          </h1>
+          <p class="text-gray-500 text-sm mt-1">
+            Sign in to manage your issues
+          </p>
+        </div>
+
+        <!-- username -->
+        <div class="field-group">
+          <label class="field-label">Username</label>
+          <input
+            type="text"
+            id="usernameInput"
+            placeholder="Enter Username"
+            class="field-input"
+          />
+          <span class="hint-text">Default: admin</span>
+        </div>
+
+        <!-- password -->
+        <div class="field-group mt-4">
+          <label class="field-label">Password</label>
+          <input
+            type="password"
+            id="passwordInput"
+            placeholder="Enter Password"
+            class="field-input"
+          />
+          <span class="hint-text">Default: admin123</span>
+        </div>
+
+        <!-- error -->
+        <p id="loginError" class="text-red-500 text-sm mt-2 hidden">
+          Invalid username or password.
+        </p>
+
+        <!-- sign in button -->
+        <button id="signInBtn" class="signin-btn mt-5">Sign In</button>
+
+        <!-- or divider -->
+        <div class="or-divider">
+          <span>OR</span>
+        </div>
+
+        <!-- demo credentials -->
+        <p class="text-gray-400 text-sm text-center mb-2">Demo Credentials:</p>
+        <div class="demo-box">
+          <p class="text-sm text-center">
+            <span class="font-bold">Username:</span> admin
+          </p>
+          <p class="text-sm text-center">
+            <span class="font-bold">Password:</span> admin123
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD PAGE -->
+    <div id="dashboardPage" class="hidden"></div>
+
+    <script src="./scripts.js"></script>
+  </body>
+</html>
