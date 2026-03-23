@@ -21,6 +21,15 @@ function handleLogin() {
 function showDashboard() {
   document.getElementById("loginPage").classList.add("hidden");
   document.getElementById("dashboardPage").classList.remove("hidden");
+
+  // show skeleton for 1.5 seconds then show actual dashboard content
+  const skeleton = document.getElementById("skeletonLoader");
+  skeleton.classList.remove("hidden");
+
+  setTimeout(() => {
+    skeleton.classList.add("hidden");
+    loadAllIssues();
+  }, 1500);
 }
 
 function checkSession() {
@@ -28,6 +37,7 @@ function checkSession() {
     showDashboard();
   }
 }
+function loadAllIssues() {}
 
 function setupLogin() {
   document.getElementById("signInBtn").addEventListener("click", handleLogin);
@@ -39,7 +49,16 @@ function setupLogin() {
   });
 }
 
+function setupLogout() {
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    document.getElementById("dashboardPage").classList.add("hidden");
+    document.getElementById("loginPage").classList.remove("hidden");
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   checkSession();
   setupLogin();
+  setupLogout();
 });

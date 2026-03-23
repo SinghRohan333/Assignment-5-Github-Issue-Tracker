@@ -92,7 +92,82 @@
     </div>
 
     <!-- DASHBOARD PAGE -->
-    <div id="dashboardPage" class="hidden"></div>
+    <div id="dashboardPage" class="hidden">
+      <!-- Navbar -->
+      <nav class="navbar">
+        <div class="navbar-left">
+          <img src="./assets/github-logo.png" alt="logo" class="nav-logo" />
+          <span class="nav-title">GitHub Issues Tracker</span>
+        </div>
+        <div class="navbar-right">
+          <div class="search-wrapper">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="search-icon"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z"
+              />
+            </svg>
+            <input
+              type="text"
+              id="searchInput"
+              placeholder="Search issues..."
+              class="search-input"
+            />
+          </div>
+          <button class="new-issue-btn">+ New Issue</button>
+          <button id="logoutBtn" class="logout-btn">Log Out</button>
+        </div>
+      </nav>
+
+      <!-- Skeleton Loader -->
+      <div id="skeletonLoader" class="hidden skeleton-wrapper">
+        <!-- skeleton navbar-like top bar -->
+        <div class="skeleton-top-bar">
+          <div class="skeleton h-8 w-40 rounded"></div>
+          <div class="skeleton h-8 w-24 rounded"></div>
+        </div>
+        <!-- skeleton cards grid -->
+        <div class="skeleton-grid">
+          <div class="skeleton-card" *ngFor>
+            <div class="skeleton h-4 w-16 rounded mb-3"></div>
+            <div class="skeleton h-4 w-full rounded mb-2"></div>
+            <div class="skeleton h-4 w-3/4 rounded mb-4"></div>
+            <div class="skeleton h-3 w-20 rounded mb-2"></div>
+            <div class="skeleton h-3 w-32 rounded"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton h-4 w-16 rounded mb-3"></div>
+            <div class="skeleton h-4 w-full rounded mb-2"></div>
+            <div class="skeleton h-4 w-3/4 rounded mb-4"></div>
+            <div class="skeleton h-3 w-20 rounded mb-2"></div>
+            <div class="skeleton h-3 w-32 rounded"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton h-4 w-16 rounded mb-3"></div>
+            <div class="skeleton h-4 w-full rounded mb-2"></div>
+            <div class="skeleton h-4 w-3/4 rounded mb-4"></div>
+            <div class="skeleton h-3 w-20 rounded mb-2"></div>
+            <div class="skeleton h-3 w-32 rounded"></div>
+          </div>
+          <div class="skeleton-card">
+            <div class="skeleton h-4 w-16 rounded mb-3"></div>
+            <div class="skeleton h-4 w-full rounded mb-2"></div>
+            <div class="skeleton h-4 w-3/4 rounded mb-4"></div>
+            <div class="skeleton h-3 w-20 rounded mb-2"></div>
+            <div class="skeleton h-3 w-32 rounded"></div>
+          </div>
+        </div>
+      </div>
+      <!-- Tab Section & Issue Count Bar -->
+    </div>
 
     <script src="./scripts.js"></script>
   </body>
