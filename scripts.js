@@ -25,6 +25,7 @@ function handleLogin() {
 function showDashboard() {
   document.getElementById("loginPage").classList.add("hidden");
   document.getElementById("dashboardPage").classList.remove("hidden");
+  document.getElementById("mainFooter").classList.remove("hidden");
 
   // show skeleton for 1.5 seconds then show actual dashboard content
   const skeleton = document.getElementById("skeletonLoader");
@@ -135,6 +136,7 @@ function setupLogout() {
     localStorage.removeItem("isLoggedIn");
     document.getElementById("dashboardPage").classList.add("hidden");
     document.getElementById("loginPage").classList.remove("hidden");
+    document.getElementById("mainFooter").classList.add("hidden");
   });
 }
 
