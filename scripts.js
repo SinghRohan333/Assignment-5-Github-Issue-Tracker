@@ -37,7 +37,9 @@ function checkSession() {
     showDashboard();
   }
 }
-function loadAllIssues() {}
+function loadAllIssues() {
+  document.getElementById("mainContent").classList.remove("hidden");
+}
 
 function setupLogin() {
   document.getElementById("signInBtn").addEventListener("click", handleLogin);

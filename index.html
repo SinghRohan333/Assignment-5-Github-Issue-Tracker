@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GitHub Issues Tracker</title>
+    <title>Git It Fixed - GitHub Issues Tracker</title>
 
     <!-- DaisyUI + Tailwind -->
     <link
@@ -166,7 +166,35 @@
           </div>
         </div>
       </div>
-      <!-- Tab Section & Issue Count Bar -->
+
+      <!-- Main Content -->
+      <div id="mainContent" class="hidden main-content">
+        <!-- Tabs -->
+        <div class="tabs-wrapper">
+          <button class="tab-btn active" data-tab="all">All</button>
+          <button class="tab-btn" data-tab="open">Open</button>
+          <button class="tab-btn" data-tab="closed">Closed</button>
+        </div>
+
+        <!-- Issue Count Bar -->
+        <div class="count-bar">
+          <div class="count-left">
+            <img src="./assets/Aperture.png" alt="icon" class="aperture-icon" />
+            <div>
+              <p class="count-text" id="issueCount">0 Issues</p>
+              <p class="count-subtext">Track and manage your project issues</p>
+            </div>
+          </div>
+          <div class="count-right">
+            <span class="dot green-dot"></span>
+            <span class="legend-label">Open</span>
+            <span class="dot purple-dot"></span>
+            <span class="legend-label">Closed</span>
+          </div>
+        </div>
+
+        <!-- Part 5 cards grid goes here -->
+      </div>
     </div>
 
     <script src="./scripts.js"></script>
