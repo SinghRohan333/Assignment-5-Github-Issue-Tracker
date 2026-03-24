@@ -87,6 +87,8 @@ function buildCard(issue) {
     </div>
   `;
 
+  card.addEventListener("click", () => openModal(issue.id));
+
   return card;
 }
 
@@ -159,6 +161,64 @@ function setupTabs() {
       renderIssues(filtered);
     });
   });
+}
+
+async function openModal(id) {
+  const modal = document.getElementById("issueModal");
+  const loader = document.getElementById("modalLoader");
+  const content = document.getElementById("modalContent");
+
+  // reset state every time modal opens
+  loader.classList.remove("hidden");
+  content.classList.add("hidden");
+  modal.showModal();
+
+  try {
+    const res = await fetch(`${API_BASE}/issue/${id}`);
+    const json = await res.json();
+
+    if (json.status === "success") {
+      const issue = json.data;
+
+      document.getElementById("modalStatusIcon").src = getStatusIcon(
+        issue.status,
+      );
+      document.getElementById("modalTitle").textContent = issue.title;
+      document.getElementById("modalDescription").textContent =
+        issue.description;
+      document.getElementById("modalStatus").textContent =
+        issue.status.charAt(0).toUpperCase() + issue.status.slice(1);
+      document.getElementById("modalPriority").textContent =
+        issue.priority.toUpperCase();
+      document.getElementById("modalAuthor").textContent = issue.author;
+      document.getElementById("modalAssignee").textContent =
+        issue.assignee || "Unassigned";
+      document.getElementById("modalCreated").textContent = formatDate(
+        issue.createdAt,
+      );
+      document.getElementById("modalUpdated").textContent = formatDate(
+        issue.updatedAt,
+      );
+
+      const badge = document.getElementById("modalPriorityBadge");
+      badge.textContent = issue.priority.toUpperCase();
+      badge.className = `priority-badge ${getPriorityClass(issue.priority)}`;
+
+      const labelsContainer = document.getElementById("modalLabels");
+      labelsContainer.innerHTML = "";
+      issue.labels.forEach((label) => {
+        const span = document.createElement("span");
+        span.className = `label-badge ${getLabelClass(label)}`;
+        span.textContent = label.toUpperCase();
+        labelsContainer.appendChild(span);
+      });
+
+      loader.classList.add("hidden");
+      content.classList.remove("hidden");
+    }
+  } catch (err) {
+    console.error("Failed to fetch issue:", err);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

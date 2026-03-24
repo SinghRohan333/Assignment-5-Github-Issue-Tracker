@@ -198,6 +198,75 @@
       </div>
     </div>
 
+    <!-- ISSUE DETAIL MODAL -->
+    <dialog id="issueModal" class="modal">
+      <div class="modal-box modal-custom-box">
+        <!-- close button -->
+        <form method="dialog">
+          <button
+            class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3"
+          >
+            ✕
+          </button>
+        </form>
+
+        <!-- modal spinner -->
+        <div id="modalLoader" class="flex justify-center py-8">
+          <span class="loading loading-spinner loading-md text-primary"></span>
+        </div>
+
+        <!-- modal content -->
+        <div id="modalContent" class="hidden">
+          <div class="modal-top">
+            <div class="flex items-center gap-2 mb-2">
+              <img id="modalStatusIcon" src="" alt="status" class="w-5 h-5" />
+              <span id="modalPriorityBadge" class="priority-badge"></span>
+            </div>
+            <h2 id="modalTitle" class="modal-title"></h2>
+          </div>
+
+          <p id="modalDescription" class="modal-desc"></p>
+
+          <div class="modal-meta-grid">
+            <div class="meta-item">
+              <span class="meta-label">Status</span>
+              <span id="modalStatus" class="meta-value"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Priority</span>
+              <span id="modalPriority" class="meta-value"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Author</span>
+              <span id="modalAuthor" class="meta-value"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Assignee</span>
+              <span id="modalAssignee" class="meta-value"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Created</span>
+              <span id="modalCreated" class="meta-value"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Updated</span>
+              <span id="modalUpdated" class="meta-value"></span>
+            </div>
+          </div>
+
+          <div class="mt-4">
+            <span class="meta-label">Labels</span>
+            <div id="modalLabels" class="flex flex-wrap gap-2 mt-2"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- click outside to close -->
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+
     <script src="./scripts.js"></script>
   </body>
 </html>

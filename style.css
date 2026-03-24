@@ -512,6 +512,64 @@ body {
   color: #9ca3af;
 }
 
+/* 
+  MODAL
+*/
+
+.modal-custom-box {
+  max-width: 540px;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.modal-top {
+  margin-bottom: 12px;
+}
+
+.modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+.modal-desc {
+  font-size: 14px;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.modal-meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 14px;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.meta-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.meta-value {
+  font-size: 13px;
+  font-weight: 500;
+  color: #1f2937;
+}
+
 /* responsive - login card on small screens */
 @media (max-width: 480px) {
   .login-card {
@@ -590,6 +648,13 @@ body {
 
 @media (max-width: 480px) {
   .issues-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* responsive - modal */
+@media (max-width: 480px) {
+  .modal-meta-grid {
     grid-template-columns: 1fr;
   }
 }
