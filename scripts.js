@@ -1,4 +1,4 @@
-console.log("JS connected");
+// console.log("JS connected");
 
 const CREDENTIALS = { username: "admin", password: "admin123" };
 
