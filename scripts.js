@@ -5,6 +5,7 @@ const CREDENTIALS = { username: "admin", password: "admin123" };
 const API_BASE = "https://phi-lab-server.vercel.app/api/v1/lab";
 let allIssues = [];
 let currentTab = "all";
+let searchTimeout = null;
 
 // login functionality work
 function handleLogin() {
@@ -221,9 +222,46 @@ async function openModal(id) {
   }
 }
 
+function setupSearch() {
+  const searchInput = document.getElementById("searchInput");
+
+  searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.trim();
+
+    // debouncing so api doesn't get called on every single keystroke
+    clearTimeout(searchTimeout);
+
+    searchTimeout = setTimeout(async () => {
+      if (query === "") {
+        // if search is cleared, go back to current tab data
+        let filtered = allIssues;
+        if (currentTab === "open")
+          filtered = allIssues.filter((i) => i.status === "open");
+        else if (currentTab === "closed")
+          filtered = allIssues.filter((i) => i.status === "closed");
+        renderIssues(filtered);
+        return;
+      }
+
+      try {
+        const res = await fetch(
+          `${API_BASE}/issues/search?q=${encodeURIComponent(query)}`,
+        );
+        const json = await res.json();
+        if (json.status === "success") {
+          renderIssues(json.data);
+        }
+      } catch (err) {
+        console.error("Search failed:", err);
+      }
+    }, 400);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   checkSession();
   setupLogin();
   setupLogout();
   setupTabs();
+  setupSearch();
 });
