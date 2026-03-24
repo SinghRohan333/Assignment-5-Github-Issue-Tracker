@@ -138,8 +138,32 @@ async function loadAllIssues() {
   }
 }
 
+function setupTabs() {
+  const tabs = document.querySelectorAll(".tab-btn");
+  tabs.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      // removing active from all tabs
+      tabs.forEach((t) => t.classList.remove("active"));
+      // setting clicked one as active
+      btn.classList.add("active");
+
+      currentTab = btn.dataset.tab;
+
+      let filtered = allIssues;
+      if (currentTab === "open") {
+        filtered = allIssues.filter((i) => i.status === "open");
+      } else if (currentTab === "closed") {
+        filtered = allIssues.filter((i) => i.status === "closed");
+      }
+
+      renderIssues(filtered);
+    });
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   checkSession();
   setupLogin();
   setupLogout();
+  setupTabs();
 });
