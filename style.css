@@ -580,6 +580,62 @@ body {
   padding: 60px 0;
 }
 
+/* 
+  NEW ISSUE MODAL
+*/
+
+.new-issue-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.new-issue-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.labels-checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: #4b5563;
+  cursor: pointer;
+}
+
+.checkbox-item input {
+  cursor: pointer;
+  accent-color: #4f46e5;
+}
+
+/* 
+  TOAST
+*/
+
+.toast-msg {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #1f2937;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.3s ease;
+}
+
 /* responsive - login card on small screens */
 @media (max-width: 480px) {
   .login-card {
@@ -665,6 +721,13 @@ body {
 /* responsive - modal */
 @media (max-width: 480px) {
   .modal-meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* responsive - new issue row */
+@media (max-width: 480px) {
+  .new-issue-row {
     grid-template-columns: 1fr;
   }
 }

@@ -272,6 +272,164 @@
       </form>
     </dialog>
 
+    <!-- NEW ISSUE MODAL -->
+    <dialog id="newIssueModal" class="modal">
+      <div class="modal-box modal-custom-box">
+        <form method="dialog">
+          <button
+            class="btn btn-sm btn-circle btn-ghost absolute right-3 top-3"
+          >
+            ✕
+          </button>
+        </form>
+
+        <h2 class="text-lg font-bold text-gray-800 mb-4">
+          🆕 Create New Issue
+        </h2>
+
+        <!-- Title -->
+        <div class="field-group mb-3">
+          <label class="field-label"
+            >Title <span class="text-red-500">*</span></label
+          >
+          <input
+            type="text"
+            id="newTitle"
+            placeholder="Enter issue title"
+            class="field-input"
+          />
+        </div>
+
+        <!-- Description -->
+        <div class="field-group mb-3">
+          <label class="field-label"
+            >Description <span class="text-red-500">*</span></label
+          >
+          <textarea
+            id="newDescription"
+            placeholder="Enter issue description"
+            class="field-input new-issue-textarea"
+          ></textarea>
+        </div>
+
+        <!-- Priority & Status -->
+        <div class="new-issue-row mb-3">
+          <div class="field-group">
+            <label class="field-label"
+              >Priority <span class="text-red-500">*</span></label
+            >
+            <select id="newPriority" class="field-input">
+              <option value="">Select Priority</option>
+              <option value="high">High</option>
+              <option value="medium">Medium</option>
+              <option value="low">Low</option>
+            </select>
+          </div>
+          <div class="field-group">
+            <label class="field-label"
+              >Status <span class="text-red-500">*</span></label
+            >
+            <select id="newStatus" class="field-input">
+              <option value="">Select Status</option>
+              <option value="open">Open</option>
+              <option value="closed">Closed</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Author & Assignee -->
+        <div class="new-issue-row mb-3">
+          <div class="field-group">
+            <label class="field-label"
+              >Author <span class="text-red-500">*</span></label
+            >
+            <input
+              type="text"
+              id="newAuthor"
+              placeholder="Enter author"
+              class="field-input"
+            />
+          </div>
+          <div class="field-group">
+            <label class="field-label"
+              >Assignee
+              <span class="text-gray-400 text-xs">(optional)</span></label
+            >
+            <input
+              type="text"
+              id="newAssignee"
+              placeholder="Enter assignee"
+              class="field-input"
+            />
+          </div>
+        </div>
+
+        <!-- Labels -->
+        <div class="field-group mb-4">
+          <label class="field-label">Labels</label>
+          <div class="labels-checkbox-group">
+            <label class="checkbox-item">
+              <input
+                type="checkbox"
+                value="bug"
+                class="new-issue-label-check"
+              />
+              Bug
+            </label>
+            <label class="checkbox-item">
+              <input
+                type="checkbox"
+                value="enhancement"
+                class="new-issue-label-check"
+              />
+              Enhancement
+            </label>
+            <label class="checkbox-item">
+              <input
+                type="checkbox"
+                value="documentation"
+                class="new-issue-label-check"
+              />
+              Documentation
+            </label>
+            <label class="checkbox-item">
+              <input
+                type="checkbox"
+                value="help wanted"
+                class="new-issue-label-check"
+              />
+              Help Wanted
+            </label>
+            <label class="checkbox-item">
+              <input
+                type="checkbox"
+                value="good first issue"
+                class="new-issue-label-check"
+              />
+              Good First Issue
+            </label>
+          </div>
+        </div>
+
+        <!-- error msg -->
+        <p id="newIssueError" class="text-red-500 text-sm mb-3 hidden">
+          Please fill in all required fields.
+        </p>
+
+        <!-- submit -->
+        <button id="createIssueBtn" class="signin-btn">Create Issue</button>
+      </div>
+
+      <form method="dialog" class="modal-backdrop">
+        <button>close</button>
+      </form>
+    </dialog>
+
+    <!-- TOAST -->
+    <div id="toastMsg" class="toast-msg hidden">
+      ✅ Issue created successfully!
+    </div>
+
     <script src="./scripts.js"></script>
   </body>
 </html>

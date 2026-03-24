@@ -270,10 +270,95 @@ function setupSearch() {
   });
 }
 
+function showToast(msg) {
+  const toast = document.getElementById("toastMsg");
+  toast.textContent = msg;
+  toast.classList.remove("hidden");
+
+  setTimeout(() => {
+    toast.classList.add("hidden");
+  }, 3000);
+}
+
+function setupNewIssue() {
+  // open modal on button click
+  document.querySelector(".new-issue-btn").addEventListener("click", () => {
+    // reset form fields every time modal opens
+    document.getElementById("newTitle").value = "";
+    document.getElementById("newDescription").value = "";
+    document.getElementById("newPriority").value = "";
+    document.getElementById("newStatus").value = "";
+    document.getElementById("newAuthor").value = "";
+    document.getElementById("newAssignee").value = "";
+    document.getElementById("newIssueError").classList.add("hidden");
+    document
+      .querySelectorAll(".new-issue-label-check")
+      .forEach((cb) => (cb.checked = false));
+
+    document.getElementById("newIssueModal").showModal();
+  });
+
+  // handle create button
+  document.getElementById("createIssueBtn").addEventListener("click", () => {
+    const title = document.getElementById("newTitle").value.trim();
+    const description = document.getElementById("newDescription").value.trim();
+    const priority = document.getElementById("newPriority").value;
+    const status = document.getElementById("newStatus").value;
+    const author = document.getElementById("newAuthor").value.trim();
+    const assignee = document.getElementById("newAssignee").value.trim();
+
+    // simple validation
+    if (!title || !description || !priority || !status || !author) {
+      document.getElementById("newIssueError").classList.remove("hidden");
+      return;
+    }
+
+    // collect checked labels
+    const labels = [];
+    document
+      .querySelectorAll(".new-issue-label-check:checked")
+      .forEach((cb) => {
+        labels.push(cb.value);
+      });
+
+    // build the new issue object
+    const newIssue = {
+      id: allIssues.length + 1,
+      title,
+      description,
+      status,
+      priority,
+      labels,
+      author,
+      assignee,
+      createdAt: new Date().toISOString(),
+      updatedAt: new Date().toISOString(),
+    };
+
+    // add to local array
+    allIssues.unshift(newIssue);
+
+    // close modal
+    document.getElementById("newIssueModal").close();
+
+    // re-render based on current tab
+    let filtered = allIssues;
+    if (currentTab === "open")
+      filtered = allIssues.filter((i) => i.status === "open");
+    else if (currentTab === "closed")
+      filtered = allIssues.filter((i) => i.status === "closed");
+    renderIssues(filtered);
+
+    // show toast
+    showToast("✅ Issue created successfully!");
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   checkSession();
   setupLogin();
   setupLogout();
   setupTabs();
   setupSearch();
+  setupNewIssue();
 });
