@@ -570,6 +570,16 @@ body {
   color: #1f2937;
 }
 
+/* 
+  LOADING SPINNER
+ */
+
+.spinner-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 60px 0;
+}
+
 /* responsive - login card on small screens */
 @media (max-width: 480px) {
   .login-card {

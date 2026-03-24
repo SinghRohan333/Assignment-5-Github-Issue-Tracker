@@ -95,17 +95,29 @@ function buildCard(issue) {
 
 function renderIssues(issues) {
   const grid = document.getElementById("issuesGrid");
-  document.getElementById("issueCount").textContent = `${issues.length} Issues`;
-  grid.innerHTML = "";
+  const spinner = document.getElementById("loadingSpinner");
 
-  if (issues.length === 0) {
-    grid.innerHTML = `<p class="text-gray-400 text-sm col-span-4">No issues found.</p>`;
-    return;
-  }
+  // show spinner, hide grid first
+  grid.classList.add("hidden");
+  spinner.classList.remove("hidden");
 
-  issues.forEach((issue) => {
-    grid.appendChild(buildCard(issue));
-  });
+  setTimeout(() => {
+    spinner.classList.add("hidden");
+    grid.classList.remove("hidden");
+
+    document.getElementById("issueCount").textContent =
+      `${issues.length} Issues`;
+    grid.innerHTML = "";
+
+    if (issues.length === 0) {
+      grid.innerHTML = `<p class="text-gray-400 text-sm col-span-4">No issues found.</p>`;
+      return;
+    }
+
+    issues.forEach((issue) => {
+      grid.appendChild(buildCard(issue));
+    });
+  }, 1500);
 }
 
 function setupLogin() {
